@@ -57,7 +57,7 @@ router.get("/home", async (req, res) => {
           _id: 0,
         },
       },
-      { $sort: { dateTime: -1 } },
+      { $sort: { dateTime: 1 } },
       { $limit: 1 },
     ])
     .toArray();
