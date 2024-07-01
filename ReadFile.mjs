@@ -54,10 +54,10 @@ router.get("/home", async (req, res) => {
           jobId: 1,
           running: 1,
           dateTime: 1,
-          _id: 0,
+          _id: 1,
         },
       },
-      { $sort: { dateTime: 1 } },
+      { $sort: { _id: -1 } },
       { $limit: 1 },
     ])
     .toArray();
