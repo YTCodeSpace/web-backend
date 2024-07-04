@@ -7,17 +7,19 @@ const router = express.Router();
 const connectionString =
   "mongodb+srv://rsaDev:rsa995356@cluster0.8p6qwxh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const client = new MongoClient(connectionString);
-let conn;
+let conn1;
+let conn2;
 try {
-  conn = await client.connect();
+  conn1 = await client.connect();
+  conn2 = await client.connect();
 } catch (e) {
   console.error(e);
 }
-let db = conn.db("SmartSolution");
-let collection = db.collection("Heunert");
+let db = conn1.db("SmartSolution");
+let collection1 = db.collection("Heunert");
 router.get("/home", async (req, res) => {
   let homeresult = "";
-  homeresult = await collection
+  homeresult = await collection1
     .aggregate([
       {
         $project: {
@@ -64,7 +66,12 @@ router.get("/home", async (req, res) => {
       { $limit: 1 },
     ])
     .toArray();
-
   res.send(homeresult).status(200);
+});
+
+let collection2 = db.collection("History");
+router.get("/history", async (req, res) => {
+  const jobHistory = await collection2.find().toArray();
+  res.send(jobHistory).status(200);
 });
 export default router;
