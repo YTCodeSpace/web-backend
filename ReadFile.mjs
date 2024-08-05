@@ -91,7 +91,7 @@ router.get("/history", async (req, res) => {
 });
 
 let collection3 = db.collection("Processes");
-router.get("/Processes", async (req, res) => {
+router.get("/processes", async (req, res) => {
   const hwProcesses = await collection3.find().toArray();
   res.send(hwProcesses).status(200);
 });
