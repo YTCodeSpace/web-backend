@@ -89,4 +89,10 @@ router.get("/history", async (req, res) => {
   const jobHistory = await collection2.find().toArray();
   res.send(jobHistory).status(200);
 });
+
+let collection3 = db.collection("Processes");
+router.get("/Processes", async (req, res) => {
+  const hwProcesses = await collection3.find().toArray();
+  res.send(hwProcesses).status(200);
+});
 export default router;
