@@ -95,4 +95,10 @@ router.get("/processes", async (req, res) => {
   const hwProcesses = await collection3.find().toArray();
   res.send(hwProcesses).status(200);
 });
+
+let collection4 = db.collection("Zones");
+router.get("/zones", async (req, res) => {
+  const zones = await collection4.find().toArray();
+  res.send(zones).status(200);
+});
 export default router;
