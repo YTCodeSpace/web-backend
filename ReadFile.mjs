@@ -16,6 +16,7 @@ try {
   console.error(e);
 }
 let db = conn1.db("SmartSolution");
+let db2 = conn1.db("Messages");
 let collection1 = db.collection("Heunert");
 router.get("/home", async (req, res) => {
   let homeresult = "";
@@ -100,5 +101,11 @@ let collection4 = db.collection("Zones");
 router.get("/zones", async (req, res) => {
   const zones = await collection4.find().toArray();
   res.send(zones).status(200);
+});
+
+let collection5 = db.collection("Failures");
+router.get("/failures", async (req, res) => {
+  const failures = await collection4.find().toArray();
+  res.send(failures).status(200);
 });
 export default router;
