@@ -105,7 +105,7 @@ router.get("/zones", async (req, res) => {
 
 let collection5 = db.collection("Failures");
 router.get("/failures", async (req, res) => {
-  const failures = await collection4.find().toArray();
+  const failures = await collection5.find().toArray();
   res.send(failures).status(200);
 });
 export default router;
